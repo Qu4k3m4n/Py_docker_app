@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  nosql_db:
+    image: mongo:latest
+    container_name: nosql_db
+    ports:
+      - "27017:27017"
+  
+  python_app:
+    build: ./python_app
+    container_name: python_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - nosql_db
